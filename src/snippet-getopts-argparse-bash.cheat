@@ -4,7 +4,7 @@
 TEMP_OPT=$(getopt -o :h --long help -n '<program_name>' -- "$@")
 
 [ "$?" != 0 ] && {
-  echo "FATAL: Invalid option '$OPTARG'" >&2
+  echo "FATAL: Invalid option" >&2
   exit 1
 }
 
@@ -39,7 +39,7 @@ while getopts ":h-" opt; do
     break
     ;;
   ?)
-    echo "Error: Invalid option '$OPTARG'" >&2
+    echo "FATAL: Invalid option '$OPTARG'" >&2
     exit 1
     ;;
   esac
