@@ -1,0 +1,48 @@
+% cli, getopts, argparse, bash
+
+# Insert a complex getopts (short/long flags)
+TEMP_OPT=$(getopt -o :h --long help -n '<program_name>' -- "$@")
+
+[ "$?" != 0 ] && {
+  echo "FATAL: Invalid option '$OPTARG'" >&2
+  exit 1
+}
+
+eval set -- "$TEMP_OPT"
+
+while true; do
+  case "$1" in
+  -h | --help)
+    help
+    exit 0
+    ;;
+  --)
+    shift
+    break
+    ;;
+  -)
+    shift
+    break
+    ;;
+  *) break ;;
+  esac
+done
+
+# Insert a simple getopts (short flags)
+while getopts ":h-" opt; do
+  case "$opt" in
+  h)
+    help
+    exit 0
+    ;;
+  -)
+    break
+    ;;
+  ?)
+    echo "Error: Invalid option '$OPTARG'" >&2
+    exit 1
+    ;;
+  esac
+done
+
+shift "$((OPTIND - 1))"
