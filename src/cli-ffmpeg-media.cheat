@@ -1,0 +1,13 @@
+% cli, ffmpeg, media
+
+# Extract audio from a video
+ffmpeg -i <src_video> -vn <out_audio>
+
+# Convert audio or video to another format
+ffmpeg -i <src_media> <out_media>
+
+# Compress video size (H.264, AAC, medium quality)
+ffmpeg -i <src_video> -vcodec libx264 -crf 23 -preset medium -acodec aac -b:a 128k <out_video>
+
+$ src_video: find -type f .
+$ src_media: find -type f .

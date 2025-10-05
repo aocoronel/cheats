@@ -1,0 +1,22 @@
+% cli, exiftool, media
+
+# Remove all metadata from all files in the current directory
+exiftool -ALL= .
+
+# Remove all metadata and overwrite original files
+exiftool -overwrite_original -ALL= .
+
+# Remove GPS metadata only
+exiftool -GPS:all= .
+
+# Remove metadata from a specific file
+exiftool -ALL= <file>
+
+# View metadata from a file
+exiftool <file>
+
+# Add copyright information to a file
+exiftool -Copyright="<name> © <year>" <file>
+
+# Add artist information to a file
+exiftool -Artist="<name>" <file>

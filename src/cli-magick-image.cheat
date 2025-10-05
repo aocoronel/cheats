@@ -1,0 +1,45 @@
+% cli, magick, image
+
+# Convert an image to another format
+magick "<src_image>" "<out_image>.<format>"
+
+# Resize an image to specific dimensions (e.g., 800x600)
+magick "<src_image>" -resize 800x600 "<out_image>-resized.<src_format>"
+
+# Resize an image keeping aspect ratio (width = 800)
+magick "<src_image>" -resize 800x "<out_image>-resized-aspect.<src_format>"
+
+# Resize to fit within 800x600 without stretching
+magick "<src_image>" -resize 800x600\> "<out_image>-resized-fit.<src_format>"
+
+# Reduce image quality to 80% (JPEG only)
+magick "<src_image>" -quality 80 "<out_image>-compressed.jpg"
+
+# Remove all metadata from an image
+magick "<src_image>" -strip "<out_image>-nometadata.<src_format>"
+
+# Rotate an image 90 degrees clockwise
+magick "<src_image>" -rotate 90 "<out_image>-clockwise.<src_format>"
+
+# Flip image vertically
+magick "<src_image>" -flip "<out_image>-vertical.<src_format>"
+
+# Mirror image horizontally
+magick "<src_image>" -flop "<out_image>-horizontal.<src_format>"
+
+# Crop a 200x200 region from position (50,50)
+magick "<src_image>" -crop 200x200+50+50 "<out_image>-cropped.<src_format>"
+
+# Auto-trim whitespace from image edges
+magick "<src_image>" -trim "<out_image>-trimmed.<src_format>"
+
+# Convert an image to grayscale
+magick "<src_image>" -colorspace Gray "<out_image>-gray.<src_format>"
+
+# Extract frames from a GIF
+magick "<src_image_gif>" "frame_%03d.png"
+
+# Create an animated GIF from image frames
+magick -delay 10 -loop 0 "<gif_frames>" "<gif_name>.gif"
+
+$ src_image: find -type f .

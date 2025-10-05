@@ -1,0 +1,16 @@
+% cli, luks, drive
+
+# Open a luks drive
+sudo cryptsetup luksOpen "<device_dev>" "<drive_name>"
+
+# Close a luks drive
+sudo cryptsetup luksClose "<device_mapper>"
+
+# Mounts a drive
+sudo mkdir -p /mnt/<drive_name> && sudo mount "<device_dev>" "/mnt/<drive_name>"
+
+# Mounts an encrypted drive
+sudo mkdir -p /mnt/<drive_name> && sudo mount "<device_mapper>" "/mnt/<drive_name>"
+
+$ device_dev: find /dev/ -iname "sd[a-Z][0-9]"
+$ device_mapper: ls /dev/mapper/
